@@ -6,7 +6,7 @@ import { BokehPass } from 'three/addons/postprocessing/BokehPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js'
 import gsap from 'gsap'
 import { artworks, wrap } from './artworks'
-import { artworkPosition, HOME, safeMove, travel, dampCamera } from './navigation'
+import { artworkPosition, HOME, REST_DRAG, consumeDrag, dampCamera, dragIsQuiet, queueDrag, safeMove, travel } from './navigation'
 
 type Props = {
   active: number; focus: { index: number; nonce: number }; home: number; dusk: boolean; reduced: boolean; blocked: boolean; lookMode: boolean
@@ -170,7 +170,8 @@ export default function GalleryScene({ active, focus, home, dusk, reduced, block
     const keys = new Set<string>()
     const pointers = new Map<number, {x: number; y: number}>()
     let downPoint = {x:0,y:0}, moved = false, rotating = false, pinchDistance = 0
-    function clearInput() { keys.clear(); pointers.clear(); Object.assign(targetPose, state); element.style.cursor = 'grab'; pinchDistance = 0 }
+    const pendingDrag = { ...REST_DRAG }
+    function clearInput() { keys.clear(); pointers.clear(); Object.assign(targetPose, state); Object.assign(pendingDrag, REST_DRAG); element.style.cursor = 'grab'; pinchDistance = 0 }
     const begin = () => { if (flying) Object.assign(targetPose, state); gsap.killTweensOf(state); flying = false; callbacks.current.onMove() }
     const translate = (side: number, forward: number) => {
       const next = safeMove(targetPose, travel(targetPose, side, forward, state.yaw), artworks.length)
@@ -201,11 +202,12 @@ export default function GalleryScene({ active, focus, home, dusk, reduced, block
         begin()
         if(pointers.size===2){
           const p=[...pointers.values()], distance=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y)
-          translate(-dx*.012,(distance-pinchDistance)*.06);pinchDistance=distance
+          Object.assign(pendingDrag,queueDrag(pendingDrag,{side:-dx*.012,forward:(distance-pinchDistance)*.06}))
+          pinchDistance=distance
         }else if(rotating){
-          targetPose.yaw-=dx*.004;targetPose.pitch=THREE.MathUtils.clamp(targetPose.pitch-dy*.003,-.7,.55)
+          Object.assign(pendingDrag,queueDrag(pendingDrag,{yaw:-dx*.004,pitch:-dy*.003}))
         }else{
-          translate(-dx*.023,-dy*.038)
+          Object.assign(pendingDrag,queueDrag(pendingDrag,{side:-dx*.023,forward:-dy*.038}))
         }
         return
       }
@@ -220,10 +222,10 @@ export default function GalleryScene({ active, focus, home, dusk, reduced, block
       if(!moved && event.button===0 && !preferences.current.blocked){setPointer(event);raycaster.setFromCamera(pointer,camera);const hit=raycaster.intersectObjects(faces)[0];if(hit)callbacks.current.onSelect(hit.object.userData.index)}
       element.style.cursor='grab'
     }
-    const cancel = (event: PointerEvent) => {if(!pointers.has(event.pointerId))return;pointers.delete(event.pointerId);Object.assign(targetPose,state);element.style.cursor='grab'}
+    const cancel = (event: PointerEvent) => {if(!pointers.has(event.pointerId))return;pointers.delete(event.pointerId);element.style.cursor='grab'}
     const wheel = (event: WheelEvent) => {
       if(preferences.current.blocked || event.ctrlKey)return
-      event.preventDefault();begin()
+      event.preventDefault();begin();Object.assign(pendingDrag,REST_DRAG)
       const scale=event.deltaMode===1?16:event.deltaMode===2?element.clientHeight:1
       translate(THREE.MathUtils.clamp(event.deltaX*scale,-160,160)*.016,-THREE.MathUtils.clamp(event.deltaY*scale,-160,160)*.025)
     }
@@ -246,8 +248,15 @@ export default function GalleryScene({ active, focus, home, dusk, reduced, block
       if(!preferences.current.blocked && !flying){
         let side=(keys.has('d')||keys.has('arrowright')?1:0)-(keys.has('a')||keys.has('arrowleft')?1:0)
         let forward=(keys.has('w')||keys.has('arrowup')?1:0)-(keys.has('s')||keys.has('arrowdown')?1:0)
-        const length=Math.hypot(side,forward);if(length>0){side/=length;forward/=length;translate(side*dt*5,forward*dt*5)}
+        const length=Math.hypot(side,forward);if(length>0){side/=length;forward/=length;translate(side*dt*5,forward*dt*5);Object.assign(pendingDrag,REST_DRAG)}
         targetPose.yaw+=((keys.has('q')?1:0)-(keys.has('e')?1:0))*dt*1.15
+        if(!dragIsQuiet(pendingDrag)){
+          const coast=consumeDrag(pendingDrag,dt)
+          Object.assign(pendingDrag,coast.pending)
+          translate(coast.applied.side,coast.applied.forward)
+          targetPose.yaw+=coast.applied.yaw
+          targetPose.pitch=THREE.MathUtils.clamp(targetPose.pitch+coast.applied.pitch,-.7,.55)
+        }
         const damped = dampCamera(state, targetPose, dt, preferences.current.reduced)
         const safe = safeMove(state, damped, artworks.length)
         Object.assign(state, damped, safe)

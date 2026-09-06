@@ -31,13 +31,16 @@ export function safeMove(from: CameraPosition, to: CameraPosition, count: number
 }
 
 export type CameraPose = typeof HOME
-export const CAMERA_DAMPING = { movement: 7.5, look: 10 }
+export type DragOffset = { side: number; forward: number; yaw: number; pitch: number }
+export const REST_DRAG: DragOffset = { side: 0, forward: 0, yaw: 0, pitch: 0 }
+export const CAMERA_DAMPING = { movement: 7.5, look: 10, drag: 2.6 }
 
 // Exponential response gives the same settling time at any display refresh rate.
 export function dampCamera(current: CameraPose, target: CameraPose, deltaSeconds: number, reduced = false): CameraPose {
+  if (reduced) return { ...target }
   const dt = Math.max(0, deltaSeconds)
-  const move = reduced ? 1 : -Math.expm1(-CAMERA_DAMPING.movement * dt)
-  const look = reduced ? 1 : -Math.expm1(-CAMERA_DAMPING.look * dt)
+  const move = -Math.expm1(-CAMERA_DAMPING.movement * dt)
+  const look = -Math.expm1(-CAMERA_DAMPING.look * dt)
   return {
     x: current.x + (target.x - current.x) * move,
     y: current.y + (target.y - current.y) * move,
@@ -45,4 +48,38 @@ export function dampCamera(current: CameraPose, target: CameraPose, deltaSeconds
     yaw: current.yaw + (target.yaw - current.yaw) * look,
     pitch: current.pitch + (target.pitch - current.pitch) * look,
   }
+}
+
+export function queueDrag(pending: DragOffset, step: Partial<DragOffset>): DragOffset {
+  return {
+    side: pending.side + (step.side ?? 0),
+    forward: pending.forward + (step.forward ?? 0),
+    yaw: pending.yaw + (step.yaw ?? 0),
+    pitch: pending.pitch + (step.pitch ?? 0),
+  }
+}
+
+export function consumeDrag(pending: DragOffset, deltaSeconds: number, reduced = false): { applied: DragOffset; pending: DragOffset } {
+  if (reduced) return { applied: { ...pending }, pending: { ...REST_DRAG } }
+  const dt = Math.max(0, deltaSeconds)
+  if (dt === 0) return { applied: { ...REST_DRAG }, pending: { ...pending } }
+  const factor = -Math.expm1(-CAMERA_DAMPING.drag * dt)
+  return {
+    applied: {
+      side: pending.side * factor,
+      forward: pending.forward * factor,
+      yaw: pending.yaw * factor,
+      pitch: pending.pitch * factor,
+    },
+    pending: {
+      side: pending.side * (1 - factor),
+      forward: pending.forward * (1 - factor),
+      yaw: pending.yaw * (1 - factor),
+      pitch: pending.pitch * (1 - factor),
+    },
+  }
+}
+
+export function dragIsQuiet(pending: DragOffset, epsilon = 1e-4) {
+  return Math.hypot(pending.side, pending.forward) < epsilon && Math.hypot(pending.yaw, pending.pitch) < epsilon
 }
