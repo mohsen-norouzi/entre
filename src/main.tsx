@@ -57,7 +57,7 @@ function App() {
       </header>
       <section className="intro" aria-labelledby="exhibition-title" inert={exploring}>
         <div className="eyebrow intro-reveal"><span className="tiny-line"/> A study in stillness</div>
-        <h1 className="intro-reveal" id="exhibition-title">A quieter<br/>way of<br/><em>seeing.</em></h1>
+        <h1 className="intro-reveal" id="exhibition-title">A quieter<br/>way of<br/> <em>seeing.</em></h1>
         <p className="intro-copy intro-reveal">The familiar, held in a different light.<br/>Twenty moments. Room to wander.</p>
         <button className="explore-button intro-reveal group flex items-center" onClick={()=>setExploring(true)}><span className="round-arrow"><ArrowUpRight size={20} strokeWidth={1}/></span><span>Enter the gallery</span></button>
       </section>

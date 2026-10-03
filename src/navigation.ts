@@ -1,10 +1,12 @@
+import { SCREEN_WIDTH } from './display-layout'
+
 export type CameraPosition = { x: number; z: number }
 export const ROOM = { minX: -18, maxX: 18, minZ: -34, maxZ: 14 }
 export const HOME = { x: 0, y: 2, z: 10.6, yaw: 0, pitch: -0.032 }
 export function artworkPosition(index: number) {
   const columns = [2, 1, 3, 0, 4]
   const row = Math.floor(index / 5)
-  return { x: (columns[index % 5] - 2) * 5.7 + 1.1 + (row % 2 ? 1.6 : 0), y: 1.57 + (index % 3 - 1) * .12, z: .55 - row * 8.4, yaw: index % 2 ? .12 : -.16 }
+  return { x: (columns[index % 5] - 2) * 6 + 1.1 + (row % 2 ? 1.6 : 0), y: 2.05 + (index % 3 - 1) * .12, z: .55 - row * 8.4, yaw: index % 2 ? .12 : -.16 }
 }
 export function travel(position: CameraPosition, sideways: number, forward: number, yaw: number) {
   return { x: position.x + sideways * Math.cos(yaw) - forward * Math.sin(yaw), z: position.z - sideways * Math.sin(yaw) - forward * Math.cos(yaw) }
@@ -19,13 +21,13 @@ export function safeMove(from: CameraPosition, to: CameraPosition, count: number
       const p = artworkPosition(i), c = Math.cos(p.yaw), s = Math.sin(p.yaw)
       const localX = (next.x - p.x) * c - (next.z - p.z) * s
       const localZ = (next.x - p.x) * s + (next.z - p.z) * c
-      if (Math.abs(localX) < 1.67 && Math.abs(localZ) < .45) {
+      if (Math.abs(localX) < SCREEN_WIDTH / 2 + .28 && Math.abs(localZ) < .45) {
         const previousZ = (point.x - p.x) * s + (point.z - p.z) * c
         const correction = (previousZ >= 0 ? .45 : -.45) - localZ
         next.x += correction * s; next.z += correction * c
       }
     }
-    point = next
+    if (next.x >= ROOM.minX && next.x <= ROOM.maxX && next.z >= ROOM.minZ && next.z <= ROOM.maxZ) point = next
   }
   return point
 }

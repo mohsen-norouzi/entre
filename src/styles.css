@@ -12,3 +12,12 @@
 @media(max-width:1050px){.collection-grid{grid-template-columns:repeat(3,1fr)}.room-tools{top:100px}.room-map{width:170px;padding:12px;bottom:95px}.map-floor{height:145px}.map-art{width:24px;font-size:7px}.art-caption{bottom:12%;left:58%}}
 @media(max-width:699px){.gallery{min-height:0}.room-tools{top:auto;bottom:96px;right:5%;gap:4px}.movement-toggle button{font-size:10px;padding:8px 10px;gap:5px}.movement-toggle svg{width:13px}.reset-view{font-size:9px;align-self:center}.room-map{width:133px;bottom:95px;left:5%;padding:8px}.map-floor{height:112px}.map-title{font-size:7px;margin-bottom:7px}.map-art{width:22px;height:22px;font-size:6px}.map-art:before{left:7px;right:7px;bottom:5px}.room-map>p{font-size:6px;margin-top:6px}.map-position{width:5px;height:5px}.art-caption{bottom:260px;left:50%;padding:9px 12px;max-width:90%}.art-caption h2{font-size:20px}.art-caption p{font-size:7px}.is-exploring .art-caption{bottom:255px}.footer{bottom:20px}.gesture-hint p{font-size:7px;max-width:145px}.gesture-hint p span{font-size:6px}.collection-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:25px 13px}.collection-image{height:auto}.collection-meta{gap:6px;padding-top:10px}.collection-meta h3{font-size:18px}.collection-meta p{font-size:7px;line-height:1.5}.collection-enter{width:28px;height:28px;bottom:9px;right:9px}.collection-enter svg{width:19px}.intro h1{font-size:45px}.is-exploring .art-caption{pointer-events:none}}
 @media(max-height:600px){.room-map{bottom:82px;width:150px}.map-floor{height:102px}.art-caption{bottom:82px}.room-tools{top:95px;bottom:auto}.intro{top:22%}.intro h1{font-size:47px;margin:15px 0}.intro-copy{display:none}.explore-button{margin-top:15px}}
+
+/* Warm glass controls sit quietly over the architectural light. */
+.is-exploring .atmosphere{background:linear-gradient(0deg,rgba(222,210,189,.32),transparent 19%,transparent 87%,rgba(230,218,196,.08))}
+.room-map{background:rgba(230,220,202,.77);border-color:#fff6;box-shadow:0 8px 35px #55482d12;backdrop-filter:blur(20px)}
+.art-caption{background:rgba(236,225,204,.76);border-color:#fff6;padding:17px 21px;box-shadow:0 8px 30px #55482d0c;backdrop-filter:blur(20px)}
+.art-caption h2{font-size:25px}.art-caption p{font-size:9px;letter-spacing:.16em}
+.movement-toggle{background:rgba(232,224,208,.72);border-color:#fff7;backdrop-filter:blur(20px)}
+.movement-toggle .chosen{background:#fff6e4a8}.reset-view{opacity:.85}.grain{opacity:.045}
+@media(max-width:699px){.art-caption{padding:11px 14px}.art-caption h2{font-size:20px}.art-caption p{font-size:7px}}
