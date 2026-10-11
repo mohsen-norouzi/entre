@@ -90,7 +90,7 @@ export function createArchitecture(scene: THREE.Scene, mobile: boolean) {
   }
 }
 
-export function createDisplay(panel: THREE.Group, artTexture: THREE.Texture, scrim: THREE.Material, bronze: THREE.Material, centerY: number) {
+export function createDisplay(panel: THREE.Group, artTexture: THREE.Texture, scrim: THREE.Material, bronze: THREE.Material, centerY: number, width=2.78, height=4.18) {
   const screenHeight=13.8
   const screen=new THREE.Mesh(new THREE.PlaneGeometry(SCREEN_WIDTH,screenHeight),scrim)
   screen.position.set(0,FLOOR_Y+screenHeight/2-centerY,0)
@@ -100,17 +100,17 @@ export function createDisplay(panel: THREE.Group, artTexture: THREE.Texture, scr
   foot.position.set(0,FLOOR_Y-centerY+.03,0);foot.castShadow=true;panel.add(foot)
   const edge=new THREE.MeshStandardMaterial({color:'#51483a',roughness:.6,metalness:.25})
   const artMaterial=new THREE.MeshStandardMaterial({map:artTexture,roughness:.83,metalness:0,emissive:'#ffffff',emissiveMap:artTexture,emissiveIntensity:.4})
-  const geometry=new THREE.BoxGeometry(2.78,4.18,.065)
+  const geometry=new THREE.BoxGeometry(width,height,.065)
   // Solid prints on both sides, offset from the scrim: no coplanar surfaces.
   const front=new THREE.Mesh(geometry,[edge,edge,edge,edge,artMaterial,artMaterial])
   front.position.z=.085;front.castShadow=true;front.receiveShadow=false;panel.add(front)
   const back=front.clone();back.position.z=-.085;panel.add(back)
   for(const depth of [-.09,.09]) {
     for(const side of [-1,1]) {
-      const vertical=new THREE.Mesh(new THREE.BoxGeometry(.032,4.244,.095),bronze)
-      vertical.position.set(side*1.406,0,depth);vertical.castShadow=true;panel.add(vertical)
-      const horizontal=new THREE.Mesh(new THREE.BoxGeometry(2.78,.032,.095),bronze)
-      horizontal.position.set(0,side*2.106,depth);horizontal.castShadow=true;panel.add(horizontal)
+      const vertical=new THREE.Mesh(new THREE.BoxGeometry(.032,height+.064,.095),bronze)
+      vertical.position.set(side*(width/2+.016),0,depth);vertical.castShadow=true;panel.add(vertical)
+      const horizontal=new THREE.Mesh(new THREE.BoxGeometry(width,.032,.095),bronze)
+      horizontal.position.set(0,side*(height/2+.016),depth);horizontal.castShadow=true;panel.add(horizontal)
     }
   }
   return [front,back]

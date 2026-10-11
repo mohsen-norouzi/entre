@@ -102,7 +102,7 @@ export default function GalleryScene({ active, focus, home, dusk, reduced, block
     artworks.forEach((_, i) => {
       const panel = new THREE.Group()
       const position = artworkPosition(i)
-      const prints = createDisplay(panel, textures[i], architecture.scrim, architecture.bronze, position.y)
+      const prints = createDisplay(panel, textures[i], architecture.scrim, architecture.bronze, position.y, artworks[i].displayWidth, artworks[i].displayHeight)
       prints.forEach(print => { print.userData.index = i; faces.push(print) })
       panel.position.set(position.x, position.y, position.z); panel.rotation.y = position.yaw
       scene.add(panel); panels.push(panel)

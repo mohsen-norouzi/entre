@@ -101,6 +101,7 @@ for i in range(13):
 for i in range(9):web_box(f'Ceiling rib {i+1:02}',(-22+i*5.5,12.1,-12),(.12,1.1,68))
 
 for art in ART:
+ width=art.get('displayWidth',2.78);height=art.get('displayHeight',4.18)
  label=f"{art['id']} · {art['title']}";sub=collection(label,displays);p=art['position']
  parent=bpy.data.objects.new('ART '+label,None);sub.objects.link(parent);parent.empty_display_type='PLAIN_AXES';parent.empty_display_size=.2
  parent.location=convert(p['x'],p['y'],p['z']);parent.rotation_euler.z=p['yaw']
@@ -124,7 +125,7 @@ for art in ART:
  l.new(tex.outputs['Color'],bs.inputs['Base Color']);l.new(tex.outputs['Color'],bs.inputs['Emission Color']);bs.inputs['Emission Strength'].default_value=.4
  bs.inputs['Specular IOR Level'].default_value=.12
  for side in [-1,1]:
-  print_obj=box(label+(' · front print' if side<0 else ' · reverse print'),(0,0,0),(2.78,.065,4.18),edge,sub,.004)
+  print_obj=box(label+(' · front print' if side<0 else ' · reverse print'),(0,0,0),(width,.065,height),edge,sub,.004)
   print_obj.parent=parent;print_obj.location=(0,side*.085,0);print_obj.data.materials.append(mat)
   uv=print_obj.data.uv_layers.active or print_obj.data.uv_layers.new(name='Artwork UV')
   for poly in print_obj.data.polygons:
@@ -132,14 +133,14 @@ for art in ART:
    if is_face:
     for li in poly.loop_indices:
      co=print_obj.data.vertices[print_obj.data.loops[li].vertex_index].co
-     uv.data[li].uv=(.5+co.x/2.78*(-1 if poly.normal.y>0 else 1),.5+co.z/4.18)
+     uv.data[li].uv=(.5+co.x/width*(-1 if poly.normal.y>0 else 1),.5+co.z/height)
   for modifier in print_obj.modifiers:
    if modifier.type=='BEVEL':modifier.material=0
   for direction in [-1,1]:
-   vertical=box(label+f' · frame upright {side} {direction}',(0,0,0),(.032,.095,4.244),bronze,sub,.003)
-   vertical.parent=parent;vertical.location=(direction*1.406,side*.09,0)
-   horizontal=box(label+f' · frame rail {side} {direction}',(0,0,0),(2.78,.095,.032),bronze,sub,.003)
-   horizontal.parent=parent;horizontal.location=(0,side*.09,direction*2.106)
+   vertical=box(label+f' · frame upright {side} {direction}',(0,0,0),(.032,.095,height+.064),bronze,sub,.003)
+   vertical.parent=parent;vertical.location=(direction*(width/2+.016),side*.09,0)
+   horizontal=box(label+f' · frame rail {side} {direction}',(0,0,0),(width,.095,.032),bronze,sub,.003)
+   horizontal.parent=parent;horizontal.location=(0,side*.09,direction*(height/2+.016))
 
 world=bpy.data.worlds.new('Soft warm daylight');world.use_nodes=True;scene.world=world
 world.node_tree.nodes.get('Background').inputs['Color'].default_value=(*rgb('fff6e7'),1)
@@ -172,14 +173,14 @@ p=ART[0]['position'];focal=convert(p['x'],p['y'],p['z'])
 pos=convert(HOME['x'],HOME['y'],HOME['z'])
 hero=camera('Camera · entrance',pos,(pos[0],pos[1]+10,pos[2]+math.tan(HOME['pitch'])*10),25.05,1.8)
 hero.data.dof.focus_object.location=focal;scene.camera=hero
-camera('Camera · flower detail',(2.8,-7.8,3.2),focal,50,2)
+camera('Camera · portrait detail',(2.8,-7.8,3.2),focal,50,2)
 camera('Camera · room overview',(19,-16,10),(0,15,3.5),26,8)
 notes='''ENTRE — Architectural light
 
 This file recreates the current local React/Three.js gallery. There are 20 named
 ART parents. Each moves its original packed photograph, front/reverse solid
 prints, bronze frame rails, woven screen, and foot as one editable group.
-Artwork subjects are images on 3D prints, not sculpted flowers or stones.
+Artwork subjects are images on 3D prints, not separately sculpted subjects.
 
 All 20 textures are packed. No external downloads or texture paths are required.
 Architecture, materials, lights, and cameras are separately editable.
@@ -187,7 +188,7 @@ The scrims are shortened slightly to clear the ceiling ribs without overlaps.
 Lighting is reconstructed for Cycles; it will not be pixel-identical to WebGL.
 
 Numpad 0: camera view. F12: render. Active camera: entrance.
-Other cameras: flower detail and room overview. Move a camera's focus target
+Other cameras: portrait detail and room overview. Move a camera's focus target
 or change its F-Stop to adjust depth of field. Ceiling is hidden in the editing
 viewport only, and remains enabled for renders.
 
