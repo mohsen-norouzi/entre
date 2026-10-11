@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'bun:test'
+import { SCREEN_WIDTH } from '../src/display-layout'
 import { artworkPosition, HOME, ROOM, safeMove, travel } from '../src/navigation'
 
 describe('free gallery navigation', () => {
@@ -24,6 +25,14 @@ describe('free gallery navigation', () => {
     const localZ=(result.x-p.x)*s+(result.z-p.z)*c
     expect(localZ).toBeGreaterThanOrEqual(.449)
   })
+  test('the wider fabric screen blocks movement outside the picture edge', () => {
+    const p=artworkPosition(0), s=Math.sin(p.yaw), c=Math.cos(p.yaw)
+    const edge=SCREEN_WIDTH/2-.05
+    const from={x:p.x+c*edge+s*3,z:p.z-s*edge+c*3}
+    const to={x:p.x+c*edge-s*3,z:p.z-s*edge-c*3}
+    const result=safeMove(from,to,20)
+    expect((result.x-p.x)*s+(result.z-p.z)*c).toBeGreaterThanOrEqual(.449)
+  })
   test('all 20 works have distinct floor positions and accessible focus locations', () => {
     const positions=Array.from({length:20},(_,i)=>artworkPosition(i))
     expect(new Set(positions.map(p=>`${p.x}:${p.z}`)).size).toBe(20)
@@ -35,7 +44,7 @@ describe('free gallery navigation', () => {
     })
   })
   test('open aisles permit both sideways and forward movement', () => {
-    const from={x:4.7,z:9},to={x:4.7,z:-28}
+    const from={x:4.9,z:9},to={x:4.9,z:-28}
     const result=safeMove(from,to,20)
     expect(result.z).toBeCloseTo(to.z)
   })

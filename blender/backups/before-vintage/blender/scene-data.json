@@ -1,0 +1,331 @@
+{
+  "home": {
+    "x": 0,
+    "y": 2,
+    "z": 10.6,
+    "yaw": 0,
+    "pitch": -0.032
+  },
+  "artworks": [
+    {
+      "id": "01",
+      "title": "A fleeting thing",
+      "category": "Botanical study",
+      "image": "/art/ivory-flower.jpg",
+      "year": "2026",
+      "palette": "Ivory / ochre",
+      "description": "A petal catches the last of the light. For a moment, the ordinary becomes something almost otherworldly.",
+      "note": "A study of fragility, held in a single stem.",
+      "position": {
+        "x": 1.1,
+        "y": 1.9299999999999997,
+        "z": 0.55,
+        "yaw": -0.16
+      }
+    },
+    {
+      "id": "02",
+      "title": "The weight of quiet",
+      "category": "Sculptural study",
+      "image": "/art/river-stones.jpg",
+      "year": "2026",
+      "palette": "Stone / sand",
+      "description": "Three forms, worn smooth by time. A small arrangement that holds the tension between weight and weightlessness.",
+      "note": "A study of balance, and the space that holds it.",
+      "position": {
+        "x": -4.9,
+        "y": 2.05,
+        "z": 0.55,
+        "yaw": 0.12
+      }
+    },
+    {
+      "id": "03",
+      "title": "Where the day goes",
+      "category": "Horizon study",
+      "image": "/art/ocean-dusk.jpg",
+      "year": "2026",
+      "palette": "Charcoal / gold",
+      "description": "The horizon softens. Water gathers the fading light, and the boundary between sea and sky begins to disappear.",
+      "note": "A study of distance, at the edge of evening.",
+      "position": {
+        "x": 7.1,
+        "y": 2.17,
+        "z": 0.55,
+        "yaw": -0.16
+      }
+    },
+    {
+      "id": "04",
+      "title": "An empty invitation",
+      "category": "Architectural study",
+      "image": "/art/04-niche.jpg",
+      "year": "2026",
+      "palette": "Plaster / ivory",
+      "description": "An arch cut into a quiet wall. The light gathers where something might have been.",
+      "note": "A study of absence, given a shape.",
+      "position": {
+        "x": -10.9,
+        "y": 1.9299999999999997,
+        "z": 0.55,
+        "yaw": 0.12
+      }
+    },
+    {
+      "id": "05",
+      "title": "Soft geometry",
+      "category": "Textile study",
+      "image": "/art/05-linen.jpg",
+      "year": "2026",
+      "palette": "Linen / limestone",
+      "description": "Cloth falls over stone, its folds softening the certainty of an edge.",
+      "note": "A study of the way softness changes a form.",
+      "position": {
+        "x": 13.1,
+        "y": 2.05,
+        "z": 0.55,
+        "yaw": -0.16
+      }
+    },
+    {
+      "id": "06",
+      "title": "After the bloom",
+      "category": "Botanical study",
+      "image": "/art/06-seed-stems.jpg",
+      "year": "2026",
+      "palette": "Charcoal / straw",
+      "description": "The flowers have gone, leaving a delicate architecture of stems and seeds.",
+      "note": "A study of what remains after a season.",
+      "position": {
+        "x": 2.7,
+        "y": 2.17,
+        "z": -7.8500000000000005,
+        "yaw": 0.12
+      }
+    },
+    {
+      "id": "07",
+      "title": "A shape of light",
+      "category": "Paper study",
+      "image": "/art/07-paper-folds.jpg",
+      "year": "2026",
+      "palette": "Ivory / grey",
+      "description": "A single folded surface becomes a landscape of ridges, valleys, and unexpected shadow.",
+      "note": "A study of a small transformation.",
+      "position": {
+        "x": -3.3000000000000003,
+        "y": 1.9299999999999997,
+        "z": -7.8500000000000005,
+        "yaw": -0.16
+      }
+    },
+    {
+      "id": "08",
+      "title": "The wind remembers",
+      "category": "Landscape study",
+      "image": "/art/08-sand.jpg",
+      "year": "2026",
+      "palette": "Sand / umber",
+      "description": "Across a dune, the wind leaves a pattern that will not last the day.",
+      "note": "A study of a landscape, written and rewritten.",
+      "position": {
+        "x": 8.7,
+        "y": 2.05,
+        "z": -7.8500000000000005,
+        "yaw": 0.12
+      }
+    },
+    {
+      "id": "09",
+      "title": "A borrowed shadow",
+      "category": "Botanical study",
+      "image": "/art/09-olive.jpg",
+      "year": "2026",
+      "palette": "Olive / chalk",
+      "description": "A slender branch draws a second version of itself against the wall.",
+      "note": "A study of an object and its quiet echo.",
+      "position": {
+        "x": -9.3,
+        "y": 2.17,
+        "z": -7.8500000000000005,
+        "yaw": -0.16
+      }
+    },
+    {
+      "id": "10",
+      "title": "Held space",
+      "category": "Ceramic study",
+      "image": "/art/10-bowl.jpg",
+      "year": "2026",
+      "palette": "Porcelain / cream",
+      "description": "A pale bowl holds nothing but the changing light along its rim.",
+      "note": "A study of the space inside a form.",
+      "position": {
+        "x": 14.7,
+        "y": 1.9299999999999997,
+        "z": -7.8500000000000005,
+        "yaw": 0.12
+      }
+    },
+    {
+      "id": "11",
+      "title": "The passing air",
+      "category": "Textile study",
+      "image": "/art/11-fabric.jpg",
+      "year": "2026",
+      "palette": "Linen / pearl",
+      "description": "A sheer curtain catches a small current of air. Sunlight passes gently through it.",
+      "note": "A study of movement on the edge of stillness.",
+      "position": {
+        "x": 1.1,
+        "y": 2.05,
+        "z": -16.25,
+        "yaw": -0.16
+      }
+    },
+    {
+      "id": "12",
+      "title": "An inward tide",
+      "category": "Natural study",
+      "image": "/art/12-seashell.jpg",
+      "year": "2026",
+      "palette": "Shell / sand",
+      "description": "A spiral folds slowly into itself, carrying the memory of the water.",
+      "note": "A study of a form made over time.",
+      "position": {
+        "x": -4.9,
+        "y": 2.17,
+        "z": -16.25,
+        "yaw": 0.12
+      }
+    },
+    {
+      "id": "13",
+      "title": "Almost disappearing",
+      "category": "Landscape study",
+      "image": "/art/13-mountains.jpg",
+      "year": "2026",
+      "palette": "Mist / slate",
+      "description": "Far ridges recede into the mist until their outlines become a suggestion.",
+      "note": "A study of distance, softened by weather.",
+      "position": {
+        "x": 7.1,
+        "y": 1.9299999999999997,
+        "z": -16.25,
+        "yaw": -0.16
+      }
+    },
+    {
+      "id": "14",
+      "title": "A darker sweetness",
+      "category": "Still-life study",
+      "image": "/art/14-pear.jpg",
+      "year": "2026",
+      "palette": "Umber / charcoal",
+      "description": "One dark pear, resting in a pool of light. Its uneven surface holds a small world.",
+      "note": "A study of the familiar, looked at again.",
+      "position": {
+        "x": -10.9,
+        "y": 2.05,
+        "z": -16.25,
+        "yaw": 0.12
+      }
+    },
+    {
+      "id": "15",
+      "title": "The smallest disturbance",
+      "category": "Water study",
+      "image": "/art/15-ripples.jpg",
+      "year": "2026",
+      "palette": "Silver / taupe",
+      "description": "A circle travels outward across still water, becoming wider and less certain.",
+      "note": "A study of how one moment moves through another.",
+      "position": {
+        "x": 13.1,
+        "y": 2.17,
+        "z": -16.25,
+        "yaw": -0.16
+      }
+    },
+    {
+      "id": "16",
+      "title": "A slow curve",
+      "category": "Sculptural study",
+      "image": "/art/16-travertine.jpg",
+      "year": "2026",
+      "palette": "Travertine / cream",
+      "description": "An arc of porous stone gives a solid material an unexpected lightness.",
+      "note": "A study of weight, interrupted by air.",
+      "position": {
+        "x": 2.7,
+        "y": 1.9299999999999997,
+        "z": -24.650000000000002,
+        "yaw": 0.12
+      }
+    },
+    {
+      "id": "17",
+      "title": "A pale memory",
+      "category": "Botanical study",
+      "image": "/art/17-hydrangea.jpg",
+      "year": "2026",
+      "palette": "Parchment / ivory",
+      "description": "A dried bloom holds the shape of summer in its papery petals.",
+      "note": "A study of a moment that refuses to disappear.",
+      "position": {
+        "x": -3.3000000000000003,
+        "y": 2.05,
+        "z": -24.650000000000002,
+        "yaw": -0.16
+      }
+    },
+    {
+      "id": "18",
+      "title": "A world within",
+      "category": "Glass study",
+      "image": "/art/18-glass-orb.jpg",
+      "year": "2026",
+      "palette": "Glass / gold",
+      "description": "Light passes through a suspended sphere, bending the room into a smaller world.",
+      "note": "A study of transparency and the space it changes.",
+      "position": {
+        "x": 8.7,
+        "y": 2.17,
+        "z": -24.650000000000002,
+        "yaw": 0.12
+      }
+    },
+    {
+      "id": "19",
+      "title": "The other light",
+      "category": "Horizon study",
+      "image": "/art/19-moon-sea.jpg",
+      "year": "2026",
+      "palette": "Midnight / silver",
+      "description": "The moon hangs above the sea. A narrow path of light reaches toward the shore.",
+      "note": "A study of the stillness after dusk.",
+      "position": {
+        "x": -9.3,
+        "y": 1.9299999999999997,
+        "z": -24.650000000000002,
+        "yaw": -0.16
+      }
+    },
+    {
+      "id": "20",
+      "title": "The surface of a day",
+      "category": "Paper study",
+      "image": "/art/20-paper.jpg",
+      "year": "2026",
+      "palette": "Parchment / ochre",
+      "description": "Sunlight grazes the creases of handmade paper, revealing the grain of an ordinary surface.",
+      "note": "A study of the detail we almost miss.",
+      "position": {
+        "x": 14.7,
+        "y": 2.05,
+        "z": -24.650000000000002,
+        "yaw": 0.12
+      }
+    }
+  ]
+}

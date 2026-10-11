@@ -1,0 +1,391 @@
+{
+  "home": {
+    "x": 0,
+    "y": 2,
+    "z": 10.6,
+    "yaw": 0,
+    "pitch": -0.032
+  },
+  "artworks": [
+    {
+      "id": "01",
+      "title": "Ivory hour",
+      "category": "Vintage portrait",
+      "image": "/art/vintage/01-ivory-hour.jpg",
+      "year": "2026",
+      "palette": "Ivory / taupe / charcoal",
+      "description": "Ivory tailoring and pearls in slanting afternoon light.",
+      "note": "A portrait in warm light, with the softness of film.",
+      "position": {
+        "x": -3,
+        "y": 1.9299999999999997,
+        "z": 0.55,
+        "yaw": 0.12
+      },
+      "displayWidth": 2.78,
+      "displayHeight": 4.17,
+      "series": "Portraits in time"
+    },
+    {
+      "id": "02",
+      "title": "Quiet company",
+      "category": "Vintage portrait",
+      "image": "/art/vintage/02-quiet-company.jpg",
+      "year": "2026",
+      "palette": "Ivory / taupe / charcoal",
+      "description": "Dark wool tailoring, a weathered wall, and a patient companion.",
+      "note": "A portrait in warm light, with the softness of film.",
+      "position": {
+        "x": -9,
+        "y": 2.05,
+        "z": 0.55,
+        "yaw": 0.12
+      },
+      "displayWidth": 2.78,
+      "displayHeight": 4.17,
+      "series": "Portraits in time"
+    },
+    {
+      "id": "03",
+      "title": "Into shadow",
+      "category": "Vintage portrait",
+      "image": "/art/vintage/03-into-shadow.jpg",
+      "year": "2026",
+      "palette": "Ivory / taupe / charcoal",
+      "description": "A black turtleneck and a profile caught between light and shadow.",
+      "note": "A portrait in warm light, with the softness of film.",
+      "position": {
+        "x": -3,
+        "y": 2.17,
+        "z": -6.05,
+        "yaw": 0.12
+      },
+      "displayWidth": 2.78,
+      "displayHeight": 4.17,
+      "series": "Portraits in time"
+    },
+    {
+      "id": "04",
+      "title": "Pearl light",
+      "category": "Vintage portrait",
+      "image": "/art/vintage/04-pearl-light.jpg",
+      "year": "2026",
+      "palette": "Ivory / taupe / charcoal",
+      "description": "A white blouse and layered pearls against an old paneled wall.",
+      "note": "A portrait in warm light, with the softness of film.",
+      "position": {
+        "x": -9,
+        "y": 1.9299999999999997,
+        "z": -6.05,
+        "yaw": 0.12
+      },
+      "displayWidth": 2.78,
+      "displayHeight": 4.17,
+      "series": "Portraits in time"
+    },
+    {
+      "id": "05",
+      "title": "The passing air",
+      "category": "Textile study",
+      "image": "/art/11-fabric.jpg",
+      "year": "2026",
+      "palette": "Linen / pearl",
+      "description": "A sheer curtain catches a small current of air. Sunlight passes gently through it.",
+      "note": "A study of movement on the edge of stillness.",
+      "position": {
+        "x": 3,
+        "y": 2.05,
+        "z": 0.55,
+        "yaw": -0.12
+      },
+      "displayWidth": 2.78,
+      "displayHeight": 4.18,
+      "series": "Studies in stillness"
+    },
+    {
+      "id": "06",
+      "title": "In the mirror",
+      "category": "Vintage portrait",
+      "image": "/art/vintage/06-in-the-mirror.jpg",
+      "year": "2026",
+      "palette": "Ivory / taupe / charcoal",
+      "description": "A white shirt and a quiet reflection in warm window light.",
+      "note": "A portrait in warm light, with the softness of film.",
+      "position": {
+        "x": -3,
+        "y": 2.17,
+        "z": -12.649999999999999,
+        "yaw": 0.12
+      },
+      "displayWidth": 2.78,
+      "displayHeight": 4.17,
+      "series": "Portraits in time"
+    },
+    {
+      "id": "07",
+      "title": "Soft structure",
+      "category": "Vintage portrait",
+      "image": "/art/vintage/07-soft-structure.jpg",
+      "year": "2026",
+      "palette": "Ivory / taupe / charcoal",
+      "description": "Stone-colored tailoring and an ivory knit in warm studio light.",
+      "note": "A portrait in warm light, with the softness of film.",
+      "position": {
+        "x": -9,
+        "y": 1.9299999999999997,
+        "z": -12.649999999999999,
+        "yaw": 0.12
+      },
+      "displayWidth": 2.78,
+      "displayHeight": 4.17,
+      "series": "Portraits in time"
+    },
+    {
+      "id": "08",
+      "title": "Window seat",
+      "category": "Vintage portrait",
+      "image": "/art/vintage/08-window-seat.jpg",
+      "year": "2026",
+      "palette": "Ivory / taupe / charcoal",
+      "description": "Charcoal wool and a crisp collar beside a tall window.",
+      "note": "A portrait in warm light, with the softness of film.",
+      "position": {
+        "x": -3,
+        "y": 2.05,
+        "z": -19.249999999999996,
+        "yaw": 0.12
+      },
+      "displayWidth": 2.78,
+      "displayHeight": 4.17,
+      "series": "Portraits in time"
+    },
+    {
+      "id": "09",
+      "title": "Cocoa silk",
+      "category": "Vintage portrait",
+      "image": "/art/vintage/09-cocoa-silk.jpg",
+      "year": "2026",
+      "palette": "Ivory / taupe / charcoal",
+      "description": "A softly draped blouse and an unhurried seated pose.",
+      "note": "A portrait in warm light, with the softness of film.",
+      "position": {
+        "x": -9,
+        "y": 2.17,
+        "z": -19.249999999999996,
+        "yaw": 0.12
+      },
+      "displayWidth": 2.78,
+      "displayHeight": 4.17,
+      "series": "Portraits in time"
+    },
+    {
+      "id": "10",
+      "title": "The afternoon",
+      "category": "Vintage portrait",
+      "image": "/art/vintage/10-the-afternoon.jpg",
+      "year": "2026",
+      "palette": "Ivory / taupe / charcoal",
+      "description": "Linen tailoring and silver hair in the last warm light.",
+      "note": "A portrait in warm light, with the softness of film.",
+      "position": {
+        "x": -3,
+        "y": 1.9299999999999997,
+        "z": -25.849999999999998,
+        "yaw": 0.12
+      },
+      "displayWidth": 2.78,
+      "displayHeight": 4.17,
+      "series": "Portraits in time"
+    },
+    {
+      "id": "11",
+      "title": "A measured line",
+      "category": "Vintage portrait",
+      "image": "/art/vintage/05-a-measured-line.jpg",
+      "year": "2026",
+      "palette": "Ivory / taupe / charcoal",
+      "description": "Pinstripe tailoring traced by the geometry of sunlight.",
+      "note": "A portrait in warm light, with the softness of film.",
+      "position": {
+        "x": -9,
+        "y": 2.05,
+        "z": -25.849999999999998,
+        "yaw": 0.12
+      },
+      "displayWidth": 2.3525,
+      "displayHeight": 4.18,
+      "series": "Portraits in time"
+    },
+    {
+      "id": "12",
+      "title": "An inward tide",
+      "category": "Natural study",
+      "image": "/art/12-seashell.jpg",
+      "year": "2026",
+      "palette": "Shell / sand",
+      "description": "A spiral folds slowly into itself, carrying the memory of the water.",
+      "note": "A study of a form made over time.",
+      "position": {
+        "x": 9,
+        "y": 2.17,
+        "z": 0.55,
+        "yaw": -0.12
+      },
+      "displayWidth": 2.78,
+      "displayHeight": 4.18,
+      "series": "Studies in stillness"
+    },
+    {
+      "id": "13",
+      "title": "Almost disappearing",
+      "category": "Landscape study",
+      "image": "/art/13-mountains.jpg",
+      "year": "2026",
+      "palette": "Mist / slate",
+      "description": "Far ridges recede into the mist until their outlines become a suggestion.",
+      "note": "A study of distance, softened by weather.",
+      "position": {
+        "x": 3,
+        "y": 1.9299999999999997,
+        "z": -6.05,
+        "yaw": -0.12
+      },
+      "displayWidth": 2.78,
+      "displayHeight": 4.18,
+      "series": "Studies in stillness"
+    },
+    {
+      "id": "14",
+      "title": "A darker sweetness",
+      "category": "Still-life study",
+      "image": "/art/14-pear.jpg",
+      "year": "2026",
+      "palette": "Umber / charcoal",
+      "description": "One dark pear, resting in a pool of light. Its uneven surface holds a small world.",
+      "note": "A study of the familiar, looked at again.",
+      "position": {
+        "x": 9,
+        "y": 2.05,
+        "z": -6.05,
+        "yaw": -0.12
+      },
+      "displayWidth": 2.78,
+      "displayHeight": 4.18,
+      "series": "Studies in stillness"
+    },
+    {
+      "id": "15",
+      "title": "The smallest disturbance",
+      "category": "Water study",
+      "image": "/art/15-ripples.jpg",
+      "year": "2026",
+      "palette": "Silver / taupe",
+      "description": "A circle travels outward across still water, becoming wider and less certain.",
+      "note": "A study of how one moment moves through another.",
+      "position": {
+        "x": 3,
+        "y": 2.17,
+        "z": -12.649999999999999,
+        "yaw": -0.12
+      },
+      "displayWidth": 2.78,
+      "displayHeight": 4.18,
+      "series": "Studies in stillness"
+    },
+    {
+      "id": "16",
+      "title": "A slow curve",
+      "category": "Sculptural study",
+      "image": "/art/16-travertine.jpg",
+      "year": "2026",
+      "palette": "Travertine / cream",
+      "description": "An arc of porous stone gives a solid material an unexpected lightness.",
+      "note": "A study of weight, interrupted by air.",
+      "position": {
+        "x": 9,
+        "y": 1.9299999999999997,
+        "z": -12.649999999999999,
+        "yaw": -0.12
+      },
+      "displayWidth": 2.78,
+      "displayHeight": 4.18,
+      "series": "Studies in stillness"
+    },
+    {
+      "id": "17",
+      "title": "A pale memory",
+      "category": "Botanical study",
+      "image": "/art/17-hydrangea.jpg",
+      "year": "2026",
+      "palette": "Parchment / ivory",
+      "description": "A dried bloom holds the shape of summer in its papery petals.",
+      "note": "A study of a moment that refuses to disappear.",
+      "position": {
+        "x": 3,
+        "y": 2.05,
+        "z": -19.249999999999996,
+        "yaw": -0.12
+      },
+      "displayWidth": 2.78,
+      "displayHeight": 4.18,
+      "series": "Studies in stillness"
+    },
+    {
+      "id": "18",
+      "title": "A world within",
+      "category": "Glass study",
+      "image": "/art/18-glass-orb.jpg",
+      "year": "2026",
+      "palette": "Glass / gold",
+      "description": "Light passes through a suspended sphere, bending the room into a smaller world.",
+      "note": "A study of transparency and the space it changes.",
+      "position": {
+        "x": 9,
+        "y": 2.17,
+        "z": -19.249999999999996,
+        "yaw": -0.12
+      },
+      "displayWidth": 2.78,
+      "displayHeight": 4.18,
+      "series": "Studies in stillness"
+    },
+    {
+      "id": "19",
+      "title": "The other light",
+      "category": "Horizon study",
+      "image": "/art/19-moon-sea.jpg",
+      "year": "2026",
+      "palette": "Midnight / silver",
+      "description": "The moon hangs above the sea. A narrow path of light reaches toward the shore.",
+      "note": "A study of the stillness after dusk.",
+      "position": {
+        "x": 3,
+        "y": 1.9299999999999997,
+        "z": -25.849999999999998,
+        "yaw": -0.12
+      },
+      "displayWidth": 2.78,
+      "displayHeight": 4.18,
+      "series": "Studies in stillness"
+    },
+    {
+      "id": "20",
+      "title": "The surface of a day",
+      "category": "Paper study",
+      "image": "/art/20-paper.jpg",
+      "year": "2026",
+      "palette": "Parchment / ochre",
+      "description": "Sunlight grazes the creases of handmade paper, revealing the grain of an ordinary surface.",
+      "note": "A study of the detail we almost miss.",
+      "position": {
+        "x": 9,
+        "y": 2.05,
+        "z": -25.849999999999998,
+        "yaw": -0.12
+      },
+      "displayWidth": 2.78,
+      "displayHeight": 4.18,
+      "series": "Studies in stillness"
+    }
+  ]
+}

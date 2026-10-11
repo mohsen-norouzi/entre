@@ -4,8 +4,11 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js'
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js'
 import { BokehPass } from 'three/addons/postprocessing/BokehPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js'
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js'
+import { FXAAShader } from 'three/addons/shaders/FXAAShader.js'
 import gsap from 'gsap'
 import { artworks, wrap } from './artworks'
+import { createArchitecture, createDisplay } from './architecture'
 import { artworkPosition, HOME, REST_DRAG, consumeDrag, dampCamera, dragIsQuiet, queueDrag, safeMove, travel } from './navigation'
 
 type Props = {
@@ -32,24 +35,26 @@ export default function GalleryScene({ active, focus, home, dusk, reduced, block
     renderer.shadowMap.enabled = true
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     renderer.toneMapping = THREE.ACESFilmicToneMapping
-    renderer.toneMappingExposure = 1.17
+    renderer.toneMappingExposure = 1.08
     element.appendChild(renderer.domElement)
     const scene = new THREE.Scene()
-    scene.background = new THREE.Color('#b9b3aa')
-    scene.fog = new THREE.FogExp2('#b9b3aa', 0.009)
+    scene.background = new THREE.Color('#d8cfbf')
+    scene.fog = new THREE.FogExp2('#d8cfbf', 0.009)
     const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 70)
-    const state = { ...HOME }
-    const targetPose = { ...HOME }
+    const entrance = { ...HOME, x: window.innerWidth < 700 ? artworkPosition(0).x : HOME.x }
+    const state = { ...entrance }
+    const targetPose = { ...entrance }
     camera.position.set(state.x, state.y, state.z)
     camera.rotation.order = 'YXZ'
     camera.rotation.set(state.pitch, state.yaw, 0)
-    const ambient = new THREE.HemisphereLight('#fff4e1', '#6b635b', 2.15)
+    const ambient = new THREE.HemisphereLight('#fff6e7', '#c4b69e', 1.85)
     scene.add(ambient)
-    const sun = new THREE.DirectionalLight('#fff0d5', 3.1)
-    sun.position.set(14, 22, 8)
-    sun.target.position.set(-2, -1, -12)
+    const sun = new THREE.DirectionalLight('#fff0d5', 2.7)
+    sun.position.set(24, 18, 10)
+    sun.target.position.set(-6, -1, -16)
     sun.castShadow = true
-    sun.shadow.mapSize.set(2048, 2048)
+    sun.shadow.mapSize.set(window.innerWidth < 700 ? 2048 : 4096, window.innerWidth < 700 ? 2048 : 4096)
+    sun.shadow.radius = 3
     Object.assign(sun.shadow.camera, { left: -30, right: 30, top: 30, bottom: -30, near: 0.5, far: 75 })
     sun.shadow.normalBias = 0.03
     sun.shadow.bias = -0.0003
@@ -57,25 +62,7 @@ export default function GalleryScene({ active, focus, home, dusk, reduced, block
     const fill = new THREE.DirectionalLight('#d8dce5', 0.35)
     fill.position.set(-6, 4, 7)
     scene.add(fill)
-    const roomMaterial = new THREE.MeshStandardMaterial({ color: '#beb8ad', roughness: 0.86 })
-    const floor = new THREE.Mesh(new THREE.PlaneGeometry(100, 100), roomMaterial)
-    floor.rotation.x = -Math.PI / 2
-    floor.position.y = -1.05
-    floor.receiveShadow = true
-    scene.add(floor)
-    const wall = new THREE.Mesh(new THREE.PlaneGeometry(60, 26), new THREE.MeshStandardMaterial({ color: '#c5beb2', roughness: 1 }))
-    wall.position.set(0, 6, -40)
-    wall.receiveShadow = true
-    scene.add(wall)
-    // Large architectural fins break the sunlight into broad, soft bands.
-    const architecture = new THREE.Group()
-    for (let i = 0; i < 12; i++) {
-      const fin = new THREE.Mesh(new THREE.BoxGeometry(0.22, 12, 2), roomMaterial)
-      fin.position.set(21, 4, -37 + i * 4.5)
-      fin.castShadow = true
-      architecture.add(fin)
-    }
-    scene.add(architecture)
+    const architecture = createArchitecture(scene, window.innerWidth < 700)
     // Soft pool of bounced daylight, layered over the physical floor lighting.
     const lightCanvas = document.createElement('canvas')
     lightCanvas.width = 256; lightCanvas.height = 256
@@ -86,9 +73,10 @@ export default function GalleryScene({ active, focus, home, dusk, reduced, block
     const lightTexture = new THREE.CanvasTexture(lightCanvas)
     const pools: THREE.Mesh[] = []
     for (let i = 0; i < 10; i++) {
-      const pool = new THREE.Mesh(new THREE.PlaneGeometry(55, 1.8), new THREE.MeshBasicMaterial({ map: lightTexture, transparent: true, opacity: 0.35, depthWrite: false, blending: THREE.AdditiveBlending }))
+      const pool = new THREE.Mesh(new THREE.PlaneGeometry(55, 1.8), new THREE.MeshBasicMaterial({ map: lightTexture, transparent: true, opacity: 0.18, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1, blending: THREE.AdditiveBlending }))
       pool.rotation.set(-Math.PI / 2, 0, -0.38)
       pool.position.set(0, -1.042 + i * .001, -33 + i * 5)
+      pool.renderOrder = 1
       scene.add(pool); pools.push(pool)
     }
     const loader = new THREE.TextureLoader()
@@ -113,29 +101,23 @@ export default function GalleryScene({ active, focus, home, dusk, reduced, block
     const softShadows: THREE.Mesh[] = []
     artworks.forEach((_, i) => {
       const panel = new THREE.Group()
-      const edge = new THREE.Mesh(new THREE.BoxGeometry(2.78, 4.18, .055), new THREE.MeshStandardMaterial({ color: '#6b6255', roughness: .85 }))
-      edge.castShadow = true
-      panel.add(edge)
-      const face = new THREE.Mesh(new THREE.PlaneGeometry(2.77, 4.17), new THREE.MeshBasicMaterial({ map: textures[i], toneMapped: false }))
-      face.position.z = .029
-      face.userData.index = i
-      panel.add(face)
-      faces.push(face)
-      const back = new THREE.Mesh(face.geometry, face.material)
-      back.position.z = -.029; back.rotation.y = Math.PI; back.userData.index = i
-      panel.add(back); faces.push(back)
       const position = artworkPosition(i)
+      const prints = createDisplay(panel, textures[i], architecture.scrim, architecture.bronze, position.y, artworks[i].displayWidth, artworks[i].displayHeight)
+      prints.forEach(print => { print.userData.index = i; faces.push(print) })
       panel.position.set(position.x, position.y, position.z); panel.rotation.y = position.yaw
       scene.add(panel); panels.push(panel)
-      const shadow = new THREE.Mesh(new THREE.PlaneGeometry(4.6, 2.2), new THREE.MeshBasicMaterial({ map: shadowTexture, transparent: true, depthWrite: false, opacity: .65 }))
+      const shadow = new THREE.Mesh(new THREE.PlaneGeometry(4.6, 2.2), new THREE.MeshBasicMaterial({ map: shadowTexture, transparent: true, depthWrite: false, opacity: .4, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }))
       shadow.rotation.x = -Math.PI / 2; shadow.position.set(position.x - .35, -1.038, position.z - .15)
+      shadow.renderOrder = 2
       scene.add(shadow); softShadows.push(shadow)
     })
     const composer = new EffectComposer(renderer)
     composer.addPass(new RenderPass(scene, camera))
-    const bokeh = new BokehPass(scene,camera,{focus:10.1,aperture:0.0025,maxblur:0.008})
+    const bokeh = new BokehPass(scene,camera,{focus:10.1,aperture:0.0016,maxblur:0.007})
     composer.addPass(bokeh)
     composer.addPass(new OutputPass())
+    const antialias = new ShaderPass(FXAAShader)
+    composer.addPass(antialias)
     let flying = false
     const flyTo = (target: typeof HOME) => {
       clearInput()
@@ -147,20 +129,22 @@ export default function GalleryScene({ active, focus, home, dusk, reduced, block
         const p = artworkPosition(index)
         flyTo({ x: p.x + Math.sin(p.yaw) * 9, y: 2, z: p.z + Math.cos(p.yaw) * 9, yaw: p.yaw, pitch: -.045 })
       },
-      home: () => flyTo({ ...HOME }),
+      home: () => flyTo({ ...entrance }),
       stop: () => { clearInput(); gsap.killTweensOf(state); flying = false },
       light: (evening) => {
-        gsap.to(ambient,{intensity:evening ? .65 : 2.15,duration:1.5})
-        gsap.to(sun,{intensity:evening ? .6 : 3.1,duration:1.5})
-        const next = new THREE.Color(evening ? '#524c45' : '#b9b3aa')
+        gsap.to(ambient,{intensity:evening ? .5 : 1.85,duration:1.5})
+        gsap.to(sun,{intensity:evening ? .55 : 2.7,duration:1.5})
+        gsap.to(architecture.windowMaterial.color, {r:evening?.52:1,g:evening?.43:.9,b:evening?.32:.69,duration:1.5})
+        const next = new THREE.Color(evening ? '#524c45' : '#d8cfbf')
         gsap.to(scene.background,{r:next.r,g:next.g,b:next.b,duration:1.5})
         gsap.to(scene.fog!.color,{r:next.r,g:next.g,b:next.b,duration:1.5})
-        pools.forEach(pool => gsap.to(pool.material,{opacity:evening ? .1 : .35,duration:1.5}))
+        pools.forEach(pool => gsap.to(pool.material,{opacity:evening ? .04 : .18,duration:1.5}))
       }
     }
     const resize = () => {
       const w = element.clientWidth, h = element.clientHeight
       renderer.setSize(w, h); composer.setSize(w, h)
+      antialias.uniforms.resolution.value.set(1 / (w * renderer.getPixelRatio()), 1 / (h * renderer.getPixelRatio()))
       camera.aspect = w / h; camera.fov = w < 700 ? 52 : 44
       camera.updateProjectionMatrix()
     }
@@ -279,9 +263,9 @@ export default function GalleryScene({ active, focus, home, dusk, reduced, block
       element.removeEventListener('pointermove',move);element.removeEventListener('pointerdown',down);element.removeEventListener('pointerup',up);element.removeEventListener('pointercancel',cancel);element.removeEventListener('lostpointercapture',cancel)
       element.removeEventListener('wheel',wheel);element.removeEventListener('contextmenu',context)
       window.removeEventListener('keydown',keyDown);window.removeEventListener('keyup',keyUp);window.removeEventListener('blur',clearInput)
-      gsap.killTweensOf([state,ambient,sun,scene.background,scene.fog!.color,...pools.map(p=>p.material),...panels.flatMap(p=>[p.position,p.rotation]),...softShadows.map(s=>s.position)])
+      gsap.killTweensOf([state,ambient,sun,architecture.windowMaterial.color,scene.background,scene.fog!.color,...pools.map(p=>p.material),...panels.flatMap(p=>[p.position,p.rotation]),...softShadows.map(s=>s.position)])
       scene.traverse(object=>{if(object instanceof THREE.Mesh){object.geometry.dispose();const materials=Array.isArray(object.material)?object.material:[object.material];materials.forEach(m=>m.dispose())}})
-      textures.forEach(t=>t.dispose());lightTexture.dispose();shadowTexture.dispose();bokeh.dispose();composer.dispose();renderer.dispose();renderer.domElement.remove()
+      architecture.dispose();textures.forEach(t=>t.dispose());lightTexture.dispose();shadowTexture.dispose();antialias.dispose();bokeh.dispose();composer.dispose();renderer.dispose();renderer.domElement.remove()
     }
   },[])
   useEffect(()=>{if(focus.nonce)api.current?.focus(focus.index)},[focus])

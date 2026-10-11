@@ -1,0 +1,95 @@
+{
+  "mode": "Built-in image generation",
+  "assets": [
+    {
+      "id": "01",
+      "source": "/Users/mohsen/.codex/generated_images/01a0755c-ecc0-74a3-9b54-1ab37237ff9f/exec-d74ce523-1701-4b1c-874c-f1949ceeae33.png",
+      "prompt": "Use case: identity-preserve. Asset: one vertical 2:3 editorial photograph for a vintage fashion gallery. Edit the attached target photo of the woman in an ivory suit and pearl-and-gold necklace. Keep the same person, facial structure, hairstyle, pose, clothing, jewelry, and realistic fabric texture. Harmonize the color grade into a restrained late-1980s/early-1990s fashion-film series: warm ivory highlights, neutral natural skin, soft olive-gray shadows, charcoal blacks with gently lifted detail, subtle tobacco browns, fine analog grain, soft halation. Remove the strong green/yellow cast without making the picture modern or digitally crisp. Retain the directional window light. Fill the entire 2:3 portrait canvas with the photograph, removing only the gray screenshot bars and extending the neutral wall at the sides if needed; do not crop the head or hands. Preserve subject identity and pose. No added typography, collage, frame, or borders.",
+      "asset": "/art/vintage/01-ivory-hour.jpg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "reference edit"
+    },
+    {
+      "id": "02",
+      "source": "/Users/mohsen/.codex/generated_images/01a0755c-ecc0-74a3-9b54-1ab37237ff9f/exec-eaeee414-3de2-4679-b508-725413556656.png",
+      "prompt": "Use case: identity-preserve. Asset: single 2:3 vertical vintage fashion editorial portrait. Image 1 is the edit target: the short-haired model in dark oversized tailoring beside the brown dog; retain the dog and existing small corner symbol. Image 2 is ONLY the final collection's color/film reference, not the person or outfit to copy. Preserve Image 1's person, face, hairstyle, pose, accessories, clothing, other subjects and existing source marks. Change its color grade and photographic finish to match Image 2: restrained warm taupe/ivory highlights, neutral natural skin, soft olive-gray shadow tint, charcoal blacks with gently lifted detail, tobacco brown mids, fine analog grain and soft highlight halation. Remove inconsistent cool blue or excessive green/yellow casts. Keep the original lighting direction and expression. Maintain full subject composition within a full-bleed 2:3 portrait, expanding the existing neutral setting at the sides if needed, not cropping faces or hands. Realistic photograph; do not beautify into plastic skin. No added text, collage, border or different person.",
+      "asset": "/art/vintage/02-quiet-company.jpg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "reference edit"
+    },
+    {
+      "id": "03",
+      "source": "/Users/mohsen/.codex/generated_images/01a0755c-ecc0-74a3-9b54-1ab37237ff9f/exec-17692f9a-c514-4188-8f78-8980d6ed7358.png",
+      "prompt": "Use case: identity-preserve. Asset: single 2:3 vertical vintage fashion editorial portrait. Image 1 is the edit target: the dark-haired man in black turtleneck, silver chain and earring; preserve the side-facing head and hair over the eyes. Image 2 is ONLY the final collection's color/film reference, not the person or outfit to copy. Preserve Image 1's person, face, hairstyle, pose, accessories, clothing, other subjects and existing source marks. Change its color grade and photographic finish to match Image 2: restrained warm taupe/ivory highlights, neutral natural skin, soft olive-gray shadow tint, charcoal blacks with gently lifted detail, tobacco brown mids, fine analog grain and soft highlight halation. Remove inconsistent cool blue or excessive green/yellow casts. Keep the original lighting direction and expression. Maintain full subject composition within a full-bleed 2:3 portrait, expanding the existing neutral setting at the sides if needed, not cropping faces or hands. Realistic photograph; do not beautify into plastic skin. No added text, collage, border or different person.",
+      "asset": "/art/vintage/03-into-shadow.jpg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "reference edit"
+    },
+    {
+      "id": "04",
+      "source": "/Users/mohsen/.codex/generated_images/01a0755c-ecc0-74a3-9b54-1ab37237ff9f/exec-115feae0-a651-4e2f-a1be-76dd4375b215.png",
+      "prompt": "Use case: identity-preserve. Edit Image 1: the adult woman leaning against a paneled wall. Preserve her face, hairstyle and pose, but style her in an opaque white blouse buttoned to the upper chest, layered pearls over the blouse, and full-length high-waisted black tailored trousers with a black blazer over her shoulder. Conservative fully clothed fashion editorial. Image 2 supplies only the film color palette. Harmonize Image 1 with Image 2: warm taupe and ivory, natural skin, soft muted olive-gray shadows, rich charcoal, fine analog grain, restrained highlights. Same late-1980s fashion collection. One full-bleed vertical 2:3 photograph, preserving face and hands with tasteful neutral setting extension as needed. No nudity, transparent clothing, added text, border, or collage.",
+      "asset": "/art/vintage/04-pearl-light.jpg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "reference edit"
+    },
+    {
+      "id": "05",
+      "source": "/Users/mohsen/.codex/generated_images/01a0755c-ecc0-74a3-9b54-1ab37237ff9f/exec-f91f4332-2816-40c8-bf2b-ca0b479446f0.png",
+      "prompt": "Use case: identity-preserve. Asset: single 2:3 vertical vintage fashion editorial portrait. Image 1 is the edit target: the woman in an oversized pinstripe suit and white shirt leaning against a plaster wall in diagonal light; retain the existing small Meta AI source mark. Image 2 is ONLY the final collection's color/film reference, not the person or outfit to copy. Preserve Image 1's person, face, hairstyle, pose, accessories, clothing, other subjects and existing source marks. Change its color grade and photographic finish to match Image 2: restrained warm taupe/ivory highlights, neutral natural skin, soft olive-gray shadow tint, charcoal blacks with gently lifted detail, tobacco brown mids, fine analog grain and soft highlight halation. Remove inconsistent cool blue or excessive green/yellow casts. Keep the original lighting direction and expression. Maintain full subject composition within a full-bleed 2:3 portrait, expanding the existing neutral setting at the sides if needed, not cropping faces or hands. Realistic photograph; do not beautify into plastic skin. No added text, collage, border or different person.",
+      "asset": "/art/vintage/05-a-measured-line.jpg",
+      "width": 941,
+      "height": 1672,
+      "kind": "reference edit"
+    },
+    {
+      "id": "06",
+      "source": "/Users/mohsen/.codex/generated_images/01a0755c-ecc0-74a3-9b54-1ab37237ff9f/exec-d85e357d-4c00-4cc5-b503-41e82398386f.png",
+      "prompt": "Use case: identity-preserve. Edit Image 1: the adult curly-haired man at the antique mirror. Preserve his face, hair, pose and mirror, but button the opaque white shirt up to the collarbone, with the chain just visible at the collar. Fully clothed classic fashion editorial. Image 2 supplies only the film color palette. Harmonize Image 1 with Image 2: warm taupe and ivory, natural skin, soft muted olive-gray shadows, rich charcoal, fine analog grain, restrained highlights. Same late-1980s fashion collection. One full-bleed vertical 2:3 photograph, preserving face and hands with tasteful neutral setting extension as needed. No nudity, transparent clothing, added text, border, or collage.",
+      "asset": "/art/vintage/06-in-the-mirror.jpg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "reference edit"
+    },
+    {
+      "id": "07",
+      "source": "/Users/mohsen/.codex/generated_images/01a0755c-ecc0-74a3-9b54-1ab37237ff9f/exec-e92ab0af-d915-49d1-b4bd-a0caa494a7f2.png",
+      "prompt": "Vintage editorial portrait, warm ivory and taupe, natural skin, muted olive-gray shadows, directional window light and fine analog grain. Canonical ivory suit portrait used as style reference.",
+      "asset": "/art/vintage/07-soft-structure.jpg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "generated companion"
+    },
+    {
+      "id": "08",
+      "source": "/Users/mohsen/.codex/generated_images/01a0755c-ecc0-74a3-9b54-1ab37237ff9f/exec-2b31dd42-fdd2-4f5b-8c95-b92dd582b1f5.png",
+      "prompt": "Vintage editorial portrait, warm ivory and taupe, natural skin, muted olive-gray shadows, directional window light and fine analog grain. Canonical ivory suit portrait used as style reference.",
+      "asset": "/art/vintage/08-window-seat.jpg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "generated companion"
+    },
+    {
+      "id": "09",
+      "source": "/Users/mohsen/.codex/generated_images/01a0755c-ecc0-74a3-9b54-1ab37237ff9f/exec-df563f6b-c57c-40dc-aced-c0a1c1e79c4d.png",
+      "prompt": "Vintage editorial portrait, warm ivory and taupe, natural skin, muted olive-gray shadows, directional window light and fine analog grain. Canonical ivory suit portrait used as style reference.",
+      "asset": "/art/vintage/09-cocoa-silk.jpg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "generated companion"
+    },
+    {
+      "id": "10",
+      "source": "/Users/mohsen/.codex/generated_images/01a0755c-ecc0-74a3-9b54-1ab37237ff9f/exec-d2ed2073-6b90-496c-b9e7-b91cec7eb07a.png",
+      "prompt": "Vintage editorial portrait, warm ivory and taupe, natural skin, muted olive-gray shadows, directional window light and fine analog grain. Canonical ivory suit portrait used as style reference.",
+      "asset": "/art/vintage/10-the-afternoon.jpg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "generated companion"
+    }
+  ]
+}
